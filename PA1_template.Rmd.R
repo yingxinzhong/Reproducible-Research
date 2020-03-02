@@ -7,8 +7,9 @@ TotalStepsPerDay <- tapply(activity$steps, activity$date, sum, na.rm=TRUE)
 hist(TotalStepsPerDay, main = "Histogram of the total number of steps taken each day", xlab = "TotalStepsPerDay" )
 ##3.Calculate and report the mean and median of the total number of steps taken per day
 TotalStepsPerDayMean <- mean(TotalStepsPerDay)
+##TotalStepsPerDayMean:9354.2295
 TotalStepsPerDayMedian <-median(TotalStepsPerDay)
-
+##TotalStepsPerDayMedian: 10395
 ###What is the average daily activity pattern?
 ##1.Make a time series plot (i.e. type = "1)  of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
 mean_steps <- with(activity, tapply(steps,activity$interval,mean))
@@ -22,7 +23,8 @@ max_steps<- which.max(interval_steps$steps)## interval    steps
 ##104      835 206.1698
 ###Imputing missing values
 ##1.Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with \color{red}{\verb|NA|}NAs)
-NumMissingValues <- length(which(is.na(activity$steps))) ##2304
+NumMissingValues <- length(which(is.na(activity$steps))) 
+##2304
 ##2.Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
 ##We can use mean to replace missing values in interval_steps.
 ##3. Create a new dataset that is equal to the original dataset but with the missing data filled in.
@@ -46,11 +48,15 @@ hist(TotalStepsPerDayNew$steps, main="Histogram of total number of steps per day
      xlab="Total number of steps a day")
 #Mean of total number of steps
 mean(TotalStepsPerDayNew$steps)
+[1] 10766.19
 median(TotalStepsPerDayNew$steps)
+[1] 10766.19
 #Mean of data with NA
 mean(TotalStepsPerDay$steps)
+[1] 10766.19
 #Median of data with NA
 median(TotalStepsPerDay$steps)
+10765
 ##Mean values are the same, but median new data set imputting NAs is larger.
 ###Are there differences in activity patterns between weekdays and weekends?
 ##1.Create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating whether a given date is 
